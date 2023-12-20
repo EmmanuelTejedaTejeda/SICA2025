@@ -1,7 +1,4 @@
-<?= $this->extend('admin/template/layout');
-$this->section('title') ?>Crear asignatura<?= $this->endSection();
-
-?>
+<?= $this->extend('template/main'); ?>
 
 <?= $this->section('content') ?>
 
@@ -136,8 +133,8 @@ $this->section('title') ?>Crear asignatura<?= $this->endSection();
             <input type="reset" value="Restablecer" class="btn btn-default">
             <button type="submit" class="btn btn-primary float-right">Guardar</button>
         </div>
-        </div>
     </form>
+
 
 
     <script>

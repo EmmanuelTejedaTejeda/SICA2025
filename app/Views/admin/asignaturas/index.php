@@ -1,6 +1,4 @@
-<?= $this->extend('admin/template/layout');
-$this->section('title') ?> Asignaturas <?= $this->endSection();
-?>
+<?= $this->extend('template/main'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -23,13 +21,19 @@ $this->section('title') ?> Asignaturas <?= $this->endSection();
 
 
             <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Asignaturas</h5>
+                <div class="card-header ">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title">Asignaturas</h5>
+                        </div>
+                        
 
-                    <a href="<?= base_url('admin/') ?>" class="btn btn-default float-right ml-2">Regresar</a>
+                        <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
 
-
-                    <a href="<?= base_url('admin/asignaturas/new') ?>" class="btn btn-primary float-right">Nueva asignatura</a>
+                            <a href="<?= base_url('admin/') ?>" class="btn btn-default float-right ml-2 me-md-2">Regresar</a>
+                            <a href="<?= base_url('admin/asignaturas/new') ?>" class="btn btn-primary float-right">Nueva asignatura</a>
+                        </div>
+                    </div>
                     
                 </div>
                 <div class="card-body">
@@ -99,7 +103,3 @@ $this->section('title') ?> Asignaturas <?= $this->endSection();
 
 
 <?= $this->endSection(); ?>
-
-
-<?= $this->include('admin/template/css'); ?>
-<?= $this->include('admin/template/js'); ?>
