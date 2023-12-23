@@ -19,12 +19,12 @@
 
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group mb-3 has-validation">
                             <label class="form-label">Clave de la asignatura:</label>
                             <input type="text"
                                    class="form-control <?php if ($validation->getError('clave')): ?>is-invalid<?php endif ?>"
-                                   name="clave" placeholder="AA02X" value="<?php echo set_value('clave'); ?>"/>
+                                   name="clave" placeholder="IFM1000" value="<?php echo set_value('clave'); ?>"/>
                             <?php if ($validation->getError('clave')): ?>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('clave') ?>
@@ -32,7 +32,7 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group mb-3 has-validation">
                             <label class="form-label">Créditos:</label>
                             <!-- Aumento de intervalo -->
@@ -46,15 +46,29 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group mb-3 has-validation">
-                            <label class="form-label">Horas S/D/M:</label>
+                            <label class="form-label">Horas teóricas:</label>
                             <input type="number" min="0" max="50"
-                                   class="form-control <?php if ($validation->getError('horasSemana')): ?>is-invalid<?php endif ?>"
-                                   name="horasSemana" placeholder="3" value="<?php echo set_value('horasSemana'); ?>"/>
-                            <?php if ($validation->getError('horasSemana')): ?>
+                                   class="form-control <?php if ($validation->getError('ht')): ?>is-invalid<?php endif ?>"
+                                   name="ht" placeholder="3" value="<?php echo set_value('ht'); ?>"/>
+                            <?php if ($validation->getError('ht')): ?>
                                 <div class="invalid-feedback">
-                                    <?= $validation->getError('horasSemana') ?>
+                                    <?= $validation->getError('ht') ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group mb-3 has-validation">
+                            <label class="form-label">Horas prácticas:</label>
+                            <input type="number" min="0" max="50"
+                                   class="form-control <?php if ($validation->getError('hp')): ?>is-invalid<?php endif ?>"
+                                   name="hp" placeholder="3" value="<?php echo set_value('hp'); ?>"/>
+                            <?php if ($validation->getError('hp')): ?>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('hp') ?>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -97,15 +111,11 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label class="form-label">Temario de la asignatura:</label>
-                            <textarea
-                                class="form-control <?php if ($validation->getError('temario')): ?>is-invalid<?php endif ?>"
-                                name="temario" placeholder="Temario de la asignatura"><?php echo set_value('temario'); ?></textarea>
-                            <?php if ($validation->getError('temario')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('temario') ?>
-                                </div>
-                            <?php endif; ?>
+                            <label class="form-label">Tipo de asignatura:</label>
+                            <select>
+                                <option value="Tronco común"></option>
+                                <option value=""></option>
+                            </select>
                         </div>
                     </div>
                 </div>

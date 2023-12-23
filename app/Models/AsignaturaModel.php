@@ -12,7 +12,7 @@ class AsignaturaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['clave', 'nombre', 'creditos', 'ht', 'hp', 'tipo', 'activo'];
+    protected $allowedFields    = ['clave', 'nombre', 'creditos', 'ht', 'hp', 'tipo', 'descripcion', 'activo'];
 
     // Dates
     protected $useTimestamps = true;
