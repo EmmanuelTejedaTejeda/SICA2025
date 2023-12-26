@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Admin Dashboard</title>
+    <title>Asesorías</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/dash.css') ?>">
 </head>
 
@@ -63,18 +62,18 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#auth" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
-                            Auth
+                            aria-expanded="false"><i class="fa-regular fa-cog"></i>
+                            Módulos
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Login</a>
+                                <a href="<?= base_url('admin/carreras') ?>" class="sidebar-link">Carreras</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Register</a>
+                                <a href="<?= base_url('admin/asignaturas') ?>" class="sidebar-link">Asignaturas</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Forgot Password</a>
+                                <a href="#" class="sidebar-link">Grupos</a>
                             </li>
                         </ul>
                     </li>
@@ -149,7 +148,7 @@
                         <div class="col-6 text-start">
                             <p class="mb-0">
                                 <a href="#" class="text-muted">
-                                    <strong>edegantea</strong>
+                                    Developed by <strong>edegantea</strong> for Ciencias Básicas ITST
                                 </a>
                             </p>
                         </div>
@@ -176,9 +175,20 @@
             </footer>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- <script src="js/script.js"></script> -->
     <script type="text/javascript" src="<?= base_url('assets/js/dash.js') ?>"></script>
+
+    
+
 </body>
 
 </html>

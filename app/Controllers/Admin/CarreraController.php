@@ -35,7 +35,7 @@ class CarreraController extends BaseController
     }
 
 
-    public function store()
+    public function create()
     {
         $data = [
             'clave' => $this->request->getPost('clave'),
@@ -63,9 +63,10 @@ class CarreraController extends BaseController
 
 
 
-    public function udpate($id)
+    public function update($id)
     {
         $data = [
+            // 'id'    => $id,
             'clave' => $this->request->getPost('clave'),
             'nombre' => $this->request->getPost('nombre')
         ];
@@ -74,4 +75,14 @@ class CarreraController extends BaseController
 
         return redirect()->to('admin/carreras');
     }
+
+
+
+
+    public function delete($id = null)
+    {
+        $this->carreraModel->delete($id);
+        return redirect()->to('admin/carreras');
+    }
+
 }
