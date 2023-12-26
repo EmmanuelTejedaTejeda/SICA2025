@@ -25,7 +25,6 @@
 
 					<div class="row text-center">
 						<div class="col">
-							<!-- <a class="card-link" data-toggle="modal" data-target="#editModal<?= $carrera['id']; ?>">Editar</a> -->
 							<a class="card-link" data-toggle="modal" data-target="#editModal<?= $carrera['id']; ?>">Editar</a>
 						</div>
 						<div class="col">
@@ -46,6 +45,46 @@
 		</div>
 		<br>
 
+
+
+
+		<!-- Modal para editar carrera -->
+        <div class="modal" id="editModal<?= $carrera['id']; ?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Contenido del modal -->
+                    <div class="modal-body">
+                        <!-- Formulario de edición de carrera -->
+                        <form action="<?= base_url('admin/carreras/' . $carrera['id']) ?>" method="post">
+
+						<?= csrf_field() ?>
+
+						<input type="hidden" name="_method" value="PUT">
+
+						<input type="hidden" name="id">
+
+						<div>
+							<label class="form-label" for="">Clave de carrera:</label>
+							<input class="form-control" type="text" name="clave" id="" value="<?php if ($carrera['clave']): echo $carrera['clave']; else: set_value('clave'); endif; ?>"/>
+						</div>
+						<div>
+							<label class="form-label" for="">Carrera:</label>
+							<input class="form-control" type="text" name="nombre" value="<?php if ($carrera['nombre']): echo $carrera['nombre']; else: set_value('nombre'); endif; ?>"/>
+						</div>
+
+			
+      				</div>
+      			<div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+			        <button type="submit" class="btn btn-primary">Guardar</button>
+      			</div>
+      			</form>
+            </div>
+        </div>
+
+
+</div>
 
 		
 
@@ -92,89 +131,7 @@
 </div>
 
 
-<!-- Modal para editar carrera -->
-        <div class="modal" id="editModal<?= $carrera['id']; ?>">
-            <div class="modal-dialog">
-                <div class="modal-content">
 
-                    <!-- Contenido del modal -->
-                    <div class="modal-body">
-                        <!-- Formulario de edición de carrera -->
-                        <form action="<?= base_url('admin/carreras/' . $carrera['id']) ?>" method="post">
-
-						<?= csrf_field() ?>
-
-						<input type="hidden" name="_method" value="PUT">
-
-						<input type="hidden" name="id">
-
-						<div>
-							<label class="form-label" for="">Clave de carrera:</label>
-							<input class="form-control" type="text" name="clave" id="" value="<?php if ($carrera['clave']): echo $carrera['clave']; else: set_value('clave'); endif; ?>"/>
-						</div>
-						<div>
-							<label class="form-label" for="">Carrera:</label>
-							<input class="form-control" type="text" name="nombre" value="<?php if ($carrera['nombre']): echo $carrera['nombre']; else: set_value('nombre'); endif; ?>"/>
-						</div>
-
-			
-      				</div>
-      			<div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-			        <button type="submit" class="btn btn-primary">Guardar</button>
-      			</div>
-      </form>
-                    </div>
-
-                    <!-- Botón para cerrar el modal -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-<!-- Modal -->
-<!-- 
-<div class="modal fade" id="editModal<?= $carrera['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar carrera <?= $carrera['nombre'] ?></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="<?= base_url('admin/carreras/' . $carrera['id']) ?>" method="post">
-
-			<?= csrf_field() ?>
-
-			<input type="hidden" name="_method" value="PUT">
-
-			<input type="hidden" name="id">
-
-			<div>
-				<label class="form-label" for="">Clave de carrera:</label>
-				<input class="form-control" type="text" name="clave" id="" value="<?php if ($carrera['clave']): echo $carrera['clave']; else: set_value('clave'); endif; ?>"/>
-			</div>
-			<div>
-				<label class="form-label" for="">Carrera:</label>
-				<input class="form-control" type="text" name="nombre" value="<?php if ($carrera['nombre']): echo $carrera['nombre']; else: set_value('nombre'); endif; ?>"/>
-			</div>
-
-			
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
--->
 
 
 
