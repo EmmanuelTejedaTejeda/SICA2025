@@ -66,11 +66,11 @@
 
 						<div>
 							<label class="form-label" for="">Clave de carrera:</label>
-							<input class="form-control" type="text" name="clave" id="" value="<?php if ($carrera['clave']): echo $carrera['clave']; else: set_value('clave'); endif; ?>"/>
+							<input class="form-control" required type="text" name="clave" id="" value="<?php if ($carrera['clave']): echo $carrera['clave']; else: set_value('clave'); endif; ?>"/>
 						</div>
 						<div>
 							<label class="form-label" for="">Carrera:</label>
-							<input class="form-control" type="text" name="nombre" value="<?php if ($carrera['nombre']): echo $carrera['nombre']; else: set_value('nombre'); endif; ?>"/>
+							<input class="form-control" required type="text" name="nombre" value="<?php if ($carrera['nombre']): echo $carrera['nombre']; else: set_value('nombre'); endif; ?>"/>
 						</div>
 
 			
@@ -95,12 +95,9 @@
 </div>
 
 
-<!-- create.php -->
-<!-- Agregar un botón que abrirá el modal -->
 
 
-
-<!-- Modal -->
+<!-- Modal para crear -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -113,11 +110,11 @@
 
 			<div>
 				<label class="form-label" for="">Clave de carrera:</label>
-				<input class="form-control" type="text" name="clave" id="">
+				<input class="form-control" required type="text" name="clave" id="">
 			</div>
 			<div>
 				<label class="form-label" for="">Carrera:</label>
-				<input class="form-control" type="text" name="nombre" id="">
+				<input class="form-control" required type="text" name="nombre" id="">
 			</div>
 			
       </div>

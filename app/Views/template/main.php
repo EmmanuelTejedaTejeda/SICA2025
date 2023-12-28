@@ -21,48 +21,28 @@
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">
-                        Nombre del usuario
+                        Principal
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link text-primary">
-                            <i class="fa-solid fa-users pe-2"></i>
+                        <a href="#" class="sidebar-link">
+                            <i class="fa-solid fa-person-chalkboard pe-2"></i></i>
                             Asesorías
                         </a>
                     </li>
+
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="fa-solid fa-file-lines pe-2"></i>
-                            Pages
+                        <a href="<?= base_url('admin/usuarios') ?>" class="sidebar-link">
+                            <i class="fa-solid fa-users pe-2"></i>
+                            Usuarios
                         </a>
-                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Page 1</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Page 2</a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
-                            Posts
-                        </a>
-                        <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Post 1</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Post 2</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Post 3</a>
-                            </li>
-                        </ul>
-                    </li>
+
+
+
+                    
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#auth" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="fa-regular fa-cog"></i>
+                            aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
                             Módulos
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -72,6 +52,9 @@
                             <li class="sidebar-item">
                                 <a href="<?= base_url('admin/asignaturas') ?>" class="sidebar-link">Asignaturas</a>
                             </li>
+
+
+
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Grupos</a>
                             </li>
@@ -113,7 +96,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                                 <!-- <img src="image/profile.jpg" class="avatar img-fluid rounded" alt=""> -->
-                                Nombre de usuario
+                                <?= session()->get('nombre') ?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Perfil</a>
@@ -179,13 +162,45 @@
 
 
 
+    <script type="text/javascript" src="<?= base_url('assets/js/dash.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
     <!-- <script src="js/script.js"></script> -->
-    <script type="text/javascript" src="<?= base_url('assets/js/dash.js') ?>"></script>
+
+
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" class="init">
+        $('#example').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-MX.json',
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    </script>
+
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+
+<!-- <script src="<?php echo base_url('assets/adminlte/js/jquery.min.js'); ?>"></script> -->
+<script src="<?php echo base_url('assets/adminlte/js/bootstrap.bundle.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/adminlte/js/dashboard2.js'); ?>"></script>
+<script src="<?php echo base_url('assets/adminlte/js/adminlte.js'); ?>"></script>
+<script src="<?php echo base_url('assets/adminlte/js/overlay.js'); ?>"></script>
+    
 
     
 

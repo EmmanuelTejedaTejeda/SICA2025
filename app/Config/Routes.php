@@ -2,14 +2,37 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/**
- * @var RouteCollection $routes
- */
-$routes->get('/', 'Home::index');
+
+$routes->get('/', 'UserController::login');
+
+$routes->get('registro', 'RegistroController::new');
+$routes->post('registro', 'RegistroController::create');
+
+$routes->match(['get', 'post'], 'login', 'UserController::login', ["filter" => "noauth"]);
 
 
 
-$routes->resource('admin/asignaturas', ['controller' => 'Admin\AsignaturaController']);
-$routes->resource('admin/carreras', ['controller' => 'Admin\CarreraController']);
+
+// Rutas para el administrador
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'Admin\AdminController::index');
+
+	$routes->resource('asignaturas', ['controller' => 'Admin\AsignaturaController']);
+	$routes->resource('carreras', ['controller' => 'Admin\CarreraController']);
+	$routes->resource('usuarios', ['controller' => 'Admin\UsuarioController']);
+}
+);
 
 
+
+
+// Rutas para el estudiante
+$routes->group('estudiante', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'Estudiante\EstudianteController::index');
+
+}
+);
+
+
+
+$routes->get('logout', 'UserController::logout');
