@@ -3,18 +3,36 @@
 <?= $this->section('content') ?>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     
     <h2>Usuarios registrados en el sistema</h2>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
         <a class="btn btn-primary me-md-2 mr-1" href="<?= site_url('admin/'); ?>">Regresar</a>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Agregar usuario
-        </button>
-
-        
+        <a class="btn btn-primary" href="<?= site_url('admin/usuarios/new') ?>">Agregar usuario</a>
     </div>
+
+
+    
+    <?php if (session()->has('error')): ?>
+        <script>
+            // Muestra un toast de SweetAlert con el mensaje de error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<?= session('error') ?>',
+            });
+
+            // Limpia la sesión después de mostrar el mensaje
+            <?php session()->remove('error'); ?>
+        </script>
+    <?php endif; ?>
+
+
+
+
+
 
     <table id="example" class="display" style="width:100%" class="table table-justify table-bordered table-hovered">
         <thead>
@@ -256,6 +274,7 @@
         });
     </script>
 <?php endif; ?>
+
 
 
 

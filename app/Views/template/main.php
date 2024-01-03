@@ -91,26 +91,33 @@
                 <button class="btn" id="sidebar-toggle" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse navbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <!-- <img src="image/profile.jpg" class="avatar img-fluid rounded" alt=""> -->
-                                <?= session()->get('nombre') ?>
+
+
+                    <ul class="navbar-nav ml-auto">
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="dropdown" href="#">
+                                <i class="fas fa-user"></i> <?= session()->get('nombre') ?>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Perfil</a>
-                                <a href="#" class="dropdown-item">Configuración</a>
-                                <a href="#" class="dropdown-item">Cerrar sesión</a>
-                            </div>
+
                         </li>
+
+                        <li class="nav-item">
+                            <a href="<?= base_url('logout'); ?>" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="mb-3">
-                        <h4>Admin Dashboard</h4>
+
                     </div>
 
 
@@ -163,12 +170,7 @@
 
 
     <script type="text/javascript" src="<?= base_url('assets/js/dash.js') ?>"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-    <!-- <script src="js/script.js"></script> -->
 
 
 
@@ -186,6 +188,12 @@
         });
     </script>
 
+    <!-- <script src="<?php echo base_url('assets/adminlte/js/jquery.min.js'); ?>"></script> -->
+    <script src="<?php echo base_url('assets/adminlte/js/bootstrap.bundle.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/adminlte/js/dashboard2.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/adminlte/js/adminlte.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/adminlte/js/overlay.js'); ?>"></script>
+
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -195,11 +203,15 @@
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
 
 
-<!-- <script src="<?php echo base_url('assets/adminlte/js/jquery.min.js'); ?>"></script> -->
-<script src="<?php echo base_url('assets/adminlte/js/bootstrap.bundle.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/adminlte/js/dashboard2.js'); ?>"></script>
-<script src="<?php echo base_url('assets/adminlte/js/adminlte.js'); ?>"></script>
-<script src="<?php echo base_url('assets/adminlte/js/overlay.js'); ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+
+
+
     
 
     

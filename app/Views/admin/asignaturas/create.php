@@ -13,7 +13,6 @@
         <div class="card primary">
             <div class="card-header">
                 <h5 class="card-title">Crear asignatura</h5>
-                <a href="<?= base_url('admin/asignaturas') ?>" class="btn btn-danger float-right">Cancelar y regresar</a>
             </div>
 
 
@@ -50,11 +49,11 @@
                         <div class="form-group mb-3 has-validation">
                             <label class="form-label">Horas teóricas:</label>
                             <input type="number" min="0" max="50"
-                                   class="form-control <?php if ($validation->getError('ht')): ?>is-invalid<?php endif ?>"
-                                   name="ht" placeholder="3" value="<?php echo set_value('ht'); ?>"/>
-                            <?php if ($validation->getError('ht')): ?>
+                                   class="form-control <?php if ($validation->getError('horas_teoricas')): ?>is-invalid<?php endif ?>"
+                                   name="horas_teoricas" placeholder="3" value="<?php echo set_value('horas_teoricas'); ?>"/>
+                            <?php if ($validation->getError('horas_teoricas')): ?>
                                 <div class="invalid-feedback">
-                                    <?= $validation->getError('ht') ?>
+                                    <?= $validation->getError('horas_teoricas') ?>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -64,11 +63,11 @@
                         <div class="form-group mb-3 has-validation">
                             <label class="form-label">Horas prácticas:</label>
                             <input type="number" min="0" max="50"
-                                   class="form-control <?php if ($validation->getError('hp')): ?>is-invalid<?php endif ?>"
-                                   name="hp" placeholder="3" value="<?php echo set_value('hp'); ?>"/>
-                            <?php if ($validation->getError('hp')): ?>
+                                   class="form-control <?php if ($validation->getError('horas_practicas')): ?>is-invalid<?php endif ?>"
+                                   name="horas_practicas" placeholder="3" value="<?php echo set_value('horas_practicas'); ?>"/>
+                            <?php if ($validation->getError('horas_practicas')): ?>
                                 <div class="invalid-feedback">
-                                    <?= $validation->getError('hp') ?>
+                                    <?= $validation->getError('horas_practicas') ?>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -76,13 +75,13 @@
 
                 </div>
 
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col">
                         <div class="form-group mb-3 has-validation">
                             <label class="form-label">Asignatura:</label>
                             <input type="text"
                                    class="form-control <?php if ($validation->getError('nombre')): ?>is-invalid<?php endif ?>"
-                                   name="nombre" placeholder="Tu nombre" value="<?php echo set_value('nombre'); ?>"/>
+                                   name="nombre" placeholder="Nombre de la asignatura" value="<?php echo set_value('nombre'); ?>"/>
                             <?php if ($validation->getError('nombre')): ?>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('nombre') ?>
@@ -92,13 +91,13 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col">
                         <div class="form-group">
                             <label class="form-label">Descripción:</label>
                             <textarea
                                 class="form-control <?php if ($validation->getError('descripcion')): ?>is-invalid<?php endif ?>"
-                                name="descripcion" placeholder="Resumen de la asignatura"><?php echo set_value('descripcion'); ?></textarea>
+                                name="descripcion" placeholder="Resumen de la asignatura (OPCIONAL)"><?php echo set_value('descripcion'); ?></textarea>
                             <?php if ($validation->getError('descripcion')): ?>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('descripcion') ?>
@@ -108,28 +107,29 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col">
                         <div class="form-group">
                             <label class="form-label">Tipo de asignatura:</label>
-                            <select>
-                                <option value="Tronco común"></option>
-                                <option value=""></option>
+                            <select class="form-select" name="tipo_asignatura">
+                                <option value="Tronco común">Tronco común</option>
+                                <option value="Curricular">Curricular</option>
+                                <option value="Especialidad">Especialidad</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col">
                         <div class="form-group mb-3 has-validation">
                             <label class="form-label">Archivo del temario de la asignatura:</label>
                             <input type="file" accept="application/pdf"
-                                   class="form-control <?php if ($validation->getError('temarioArchivo')): ?>is-invalid<?php endif ?>"
-                                   name="temarioArchivo" placeholder="Temario de la asignatura" value="<?php echo set_value('temarioArchivo'); ?>"/>
-                            <?php if ($validation->getError('temarioArchivo')): ?>
+                                   class="form-control <?php if ($validation->getError('temario_asignatura')): ?>is-invalid<?php endif ?>"
+                                   name="temario_asignatura" placeholder="Temario de la asignatura" value="<?php echo set_value('temario_asignatura'); ?>"/>
+                            <?php if ($validation->getError('temario_asignatura')): ?>
                                 <div class="invalid-feedback">
-                                    <?= $validation->getError('temarioArchivo') ?>
+                                    <?= $validation->getError('temario_asignatura') ?>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -139,9 +139,9 @@
             </div>
         </div>
 
-        <div class="card-footer">
-            <input type="reset" value="Restablecer" class="btn btn-default">
-            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+        <div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-end">
+            <input class="btn btn-primary" type="submit" value="Guardar">
+            <a href="<?= base_url('admin/asignaturas') ?>" class="btn btn-default float-right">Cancelar y regresar</a>
         </div>
     </form>
 

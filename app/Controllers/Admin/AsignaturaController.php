@@ -8,14 +8,14 @@ use CodeIgniter\RESTful\ResourceController;
 class AsignaturaController extends ResourceController
 {
 
-    private $estudiante;
+    private $asignaturaModel;
     private $db;
 
     public function __construct()
     {
         helper(['url', 'form', 'session']);
         $this->db = \Config\Database::connect();
-        $this->asignatura = new AsignaturaModel();
+        $this->asignaturaModel = new AsignaturaModel();
         $this->session = \Config\Services::session();
     }
 
@@ -25,7 +25,7 @@ class AsignaturaController extends ResourceController
 
     public function index()
     {
-        $asignaturas = $this->asignatura->orderBy('id', 'desc')->findAll();
+        $asignaturas = $this->asignaturaModel->orderBy('id', 'desc')->findAll();
 
         $data = [
             'asignaturas'   => $asignaturas
@@ -40,7 +40,7 @@ class AsignaturaController extends ResourceController
 
     public function show($id = null)
     {
-        $asignatura = $this->asignatura->find($id);
+        $asignatura = $this->asignaturaModel->find($id);
 
         if ($asignatura) {
             return view('admin/asignaturas/show', compact('asignatura'));
@@ -63,34 +63,37 @@ class AsignaturaController extends ResourceController
 
 
 
-
     public function create()
     {
-        $inputs = $this->validate([
-            'clave'         => 'required|min_length[1]|max_length[10]',
-            'nombre'        => 'required|min_length[2]|max_length[255]',
-            'creditos'      => 'required',
-            'horasSemana'   => 'required'
-        ]);
+        $data = [
+            'clave' => $this->request->getVar('clave'),
+            'nombre' => $this->request->getVar('nombre'),
+            'creditos' => $this->request->getVar('creditos'),
+            'horas_teoricas' => $this->request->getVar('horas_teoricas'),
+            'horas_practicas' => $this->request->getVar('horas_practicas'),
+            'tipo_asignatura' => $this->request->getVar('tipo_asignatura'),
+            'descripcion' => $this->request->getVar('descripcion'),
+            'temario_asignatura' => $this->request->getVar('temario_asignatura'),
+            'activo' => 1
+        ];
 
-        if (!$inputs) {
-            return view('admin/asignaturas/create', ['validation' => $this->validator]);
+
+
+
+        $data['horas_totales'] = $data['horas_teoricas'] + $data['horas_practicas'];
+
+        $rules = [
+            'clave' => 'required|is_unique[asignaturas.clave]'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->to('/admin/asignaturas/new')->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        $this->asignatura->save([
-            'clave'             => $this->request->getVar('clave'),
-            'nombre'            => $this->request->getVar('nombre'),
-            'descripcion'       => $this->request->getVar('descripcion'),
-            'creditos'          => $this->request->getVar('creditos'),
-            'horasSemana'       => $this->request->getVar('horasSemana'),
-            'temario'           => $this->request->getVar('temario'),
-            'temarioArchivo'    => $this->request->getVar('temarioArchivo')
-        ]);
+        $this->asignaturaModel->insert($data);
 
-        return redirect()->to(site_url('/admin/asignaturas'));
-        session()->setFlashdata("success", "Asignatura registrada con éxito");
+        return redirect()->to('/admin/asignaturas')->with('success', 'Asignatura registrada exitosamente.');
     }
-
 
 
 
@@ -146,7 +149,7 @@ class AsignaturaController extends ResourceController
 
     public function delete($id = null)
     {
-        $this->asignatura->delete($id);
+        $this->asignaturaModel->delete($id);
 
         session()->setFlashdata('success', 'Registro borrado de la base de datos');
 

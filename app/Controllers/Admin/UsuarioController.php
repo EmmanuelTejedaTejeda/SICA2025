@@ -41,6 +41,64 @@ class UsuarioController extends ResourceController
 
 
 
+
+
+
+
+    /*
+    public function create()
+    {
+
+        $data = [
+            'perfil' => $this->request->getPost('perfil'),
+            'identificador' => $this->request->getPost('identificador'),
+            'nombre' => $this->request->getPost('nombre'),
+            'apaterno' => $this->request->getPost('apaterno'),
+            'amaterno' => $this->request->getPost('amaterno'),
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+            'sexo' => $this->request->getPost('sexo'),
+            'status' => $this->request->getPost('status'),
+            'fecha_nacimiento' => $this->request->getPost('fecha_nacimiento')
+        ];
+
+
+        $rules = [
+            'identificador' => 'required|is_unique[usuarios.identificador]',
+            'password'      => 'required|min_length[8]|max_length[30]',
+            'email'         => 'required|valid_email|callback_check_domain',
+        ];
+
+        $errors = [
+            'email' => [
+                'revisarDominio' => 'El correo electrónico debe ser del dominio institucional teziutlan.tecnm.mx.',
+            ],
+        ];
+
+        if (!$this->validate($rules, $errors)) {
+
+            return redirect()->to('/admin/usuarios/new')->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $this->usuario->insert($data);
+
+        return redirect()->to('/admin/usuarios')->with('success', 'Usuario creado exitosamente.');
+    }
+
+
+    public function check_domain($email)
+    {
+        $dominioPermitido = 'teziutlan.tecnm.mx';
+        $dominio = substr(strrchr($email, "@"), 1);
+        return $dominio === $dominioPermitido;
+    }
+    */
+
+
+
+
+
+    /*
     public function create()
     {
 
@@ -51,6 +109,7 @@ class UsuarioController extends ResourceController
                 'identificador' => 'required|is_unique[usuarios.identificador]',
                 'password'      => 'required|min_length[8]|max_length[30]'
             ];
+
 
             if ($this->validate($validationRules)) {
                 $perfil = $this->request->getPost('perfil');
@@ -64,6 +123,15 @@ class UsuarioController extends ResourceController
                 $status = $this->request->getPost('status');
                 $fecha_nacimiento = $this->request->getPost('fecha_nacimiento');
 
+                $allowedDomain = 'teziutlan.tecnm.mx';
+                if (strpos($email, '@' . $allowedDomain) === false) {
+                    return redirect()->to('/admin/usuarios/new')->with('error', 'El correo electrónico debe ser del dominio institucional teziutlan.tecnm.mx');
+                }
+                
+                $emailCorrecto = $email;
+
+
+
 
                 $this->usuario->save([
                     'perfil' => $perfil,
@@ -71,16 +139,20 @@ class UsuarioController extends ResourceController
                     'nombre' => $nombre,
                     'apaterno' => $apaterno,
                     'amaterno' => $amaterno,
-                    'email' => $email,
+                    'email' => $emailCorrecto,
                     'password' => password_hash($password, PASSWORD_DEFAULT),
                     'sexo' => $sexo,
                     'status'    => $status,
                     'fecha_nacimiento' => $fecha_nacimiento
                 ]);
 
-                return redirect()->to('/admin/usuarios')->with('success', 'Usuario registrada exitosamente.');
+                return redirect()->to('/admin/usuarios')->withInput()->with('success', 'Usuario registrada exitosamente.');
             } 
-            
+
+    */
+
+
+
             /* 
             else {
                 
@@ -94,6 +166,9 @@ class UsuarioController extends ResourceController
                 return view('admin/usuarios/index', $data);
             }
             */
+
+
+    /*
         }
 
         $data = [
@@ -107,6 +182,8 @@ class UsuarioController extends ResourceController
         return view('admin/usuarios/index', $data);
         // return redirect()->to('admin/usuarios', $data);
     }
+
+    */
 
 
 
@@ -146,16 +223,54 @@ class UsuarioController extends ResourceController
     */
 
 
-/*
+
     public function new()
     {
         $data = [
             'perfiles'  => $this->perfil->findAll()
         ];
 
-        return view('admin/usuarios/index', $data);
+        return view('admin/usuarios/create', $data);
     }
-    */
+
+
+    public function create()
+    {
+        $data = [
+            'perfil' => $this->request->getVar('perfil'),
+            'identificador' => $this->request->getVar('identificador'),
+            'nombre' => $this->request->getVar('nombre'),
+            'apaterno' => $this->request->getVar('apaterno'),
+            'amaterno' => $this->request->getVar('amaterno'),
+            'email' => $this->request->getVar('email'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            'sexo' => $this->request->getVar('sexo'),
+            'status'    => $this->request->getVar('status'),
+            'fecha_nacimiento' => $this->request->getVar('fecha_nacimiento')
+        ];
+
+        $rules = [
+            'identificador' => 'required|is_unique[usuarios.identificador]',
+            'password'      => 'required|min_length[8]|max_length[30]',
+            'email'    => 'required|valid_email'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->to('/admin/usuarios/new')->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $allowedDomain = 'teziutlan.tecnm.mx';
+        $emailDomain = explode('@', $data['email'])[1];
+
+        if ($emailDomain !== $allowedDomain) {
+            return redirect()->to('/admin/usuarios/new')->withInput()->with('error', 'El correo electrónico debe ser del dominio institucional.');
+        }
+
+        $this->usuario->insert($data);
+
+        return redirect()->to('/admin/usuarios')->with('success', 'Usuario creado exitosamente.');
+    }
+    
 
 
 /*
@@ -243,40 +358,17 @@ class UsuarioController extends ResourceController
     }
 
 
-    public function usuariosDocentes()
-    {
-        $usuariosDocentes = $this->usuario->join('expedientes', 'usuarios.id = expedientes.docente', 'left')->where('rol', 'docente')->orderBy('nombre', 'asc')->findAll();
-
-        $data = [
-            'usuariosDocentes' => $usuariosDocentes
-        ];
-
-        return view('admin/docentes/index', $data);
-    }
-
-
-    public function showDocente($id)
-    {
-        $usuario = $this->usuario->join('expedientes', 'usuarios.id = expedientes.docente', 'left')->find($id);
-
-        $data = [
-            'usuario' => $usuario
-        ];
-
-        return view('admin/docentes/showDocente', $data);
-    }
 
 
     public function editPassword($id)
     {
-        $usuarioModel = new UsuarioModel();
-        $data['usuario'] = $usuarioModel->find($id);
+        $data['usuario'] = $this->usuario->find($id);
 
         if (!$data['usuario']) {
             return redirect()->to('/admin/usuarios')->with('error', 'Usuario no encontrado.');
         }
 
-        return view('admin/usuarios/edit_password', $data);
+        return view('admin/usuarios/editar_password', $data);
     }
 
 
@@ -302,46 +394,6 @@ class UsuarioController extends ResourceController
     }
 
 
-    public function crearCoordinador()
-    {
-        $carreras = $this->carreraModel->orderBy('nombre', 'asc')->findAll();
-        $data = [
-            'carreras' => $carreras
-        ];
-        return view('admin/usuarios/crearCoordinador', $data);
-    }
 
-
-    public function storeCoordinador()
-    {
-        $data = [
-            'rol' => $this->request->getVar('rol'),
-            'nombre' => $this->request->getVar('nombre'),
-            'apaterno' => $this->request->getVar('apaterno'),
-            'amaterno' => $this->request->getVar('amaterno'),
-            'username' => $this->request->getVar('username'),
-            'email' => $this->request->getVar('email'),
-            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-            'sexo' => $this->request->getVar('sexo'),
-            'fechaNacimiento' => $this->request->getVar('fechaNacimiento'),
-            'numHoras' => $this->request->getVar('numHoras'),
-            'carrera' => $this->request->getVar('carrera')
-        ];
-
-        $rules = [
-            'username' => 'required|is_unique[usuarios.username]'
-        ];
-
-        if ($this->validate($rules)) {
-            $this->usuario->insert($data);
-            return redirect()->to(site_url('/admin/usuarios'));
-            session()->setFlashdata("success", "COORDINADOR registrado con éxito");
-        } else {
-            $data['usernameDuplicado'] = lang('El nombre de usuario ya se encuentra registrado.');
-            $data['emailDuplicado'] = lang('El e-mail ya se encuentra registrado.');
-            return view('admin/usuarios/crearCoordinador', $data);
-        }
-
-    }
 
 }

@@ -17,6 +17,9 @@ $routes->match(['get', 'post'], 'login', 'UserController::login', ["filter" => "
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Admin\AdminController::index');
 
+    $routes->get('usuarios/edit_password/(:num)', 'Admin\UsuarioController::editPassword/$1'); // Mostrar formulario para editar la contraseña
+    $routes->post('usuarios/update_password/(:num)', 'Admin\UsuarioController::updatePassword/$1'); // Actualizar la contraseña del usuario
+
 	$routes->resource('asignaturas', ['controller' => 'Admin\AsignaturaController']);
 	$routes->resource('carreras', ['controller' => 'Admin\CarreraController']);
 	$routes->resource('usuarios', ['controller' => 'Admin\UsuarioController']);
