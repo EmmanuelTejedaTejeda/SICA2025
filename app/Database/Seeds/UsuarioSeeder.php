@@ -14,14 +14,14 @@ class UsuarioSeeder extends Seeder
         $usuarios->insertBatch([
             [
                 'perfil'            => 1,
-                'identificador'     => '84216',
-                'nombre'            => 'Edgar',
-                'apaterno'          => 'Degante',
-                'amaterno'          => 'Aguilar',
-                'email'             => 'edgar.degante.a@gmail.com',
+                'identificador'     => '5000',
+                'nombre'            => 'Agustín',
+                'apaterno'          => 'Ronzón',
+                'amaterno'          => 'Jiménez',
+                'email'             => 'div.inf@teziutlan.tecnm.mx',
                 'password'          => password_hash('12345678', PASSWORD_DEFAULT),
                 'sexo'              => 'm',
-                'fecha_nacimiento'   => '1988/06/18',
+                'fecha_nacimiento'   => '1980/01/01',
                 'created_at'        => '2023-12-27 12:00:00'
             ]            
         ]);

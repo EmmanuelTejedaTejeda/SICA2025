@@ -1,4 +1,4 @@
-<?= $this->extend('admin/template/layout');
+<?= $this->extend('template/main');
 $this->section('title') ?>Editar asignatura<?= $this->endSection();
 ?>
 
@@ -56,21 +56,6 @@ $this->section('title') ?>Editar asignatura<?= $this->endSection();
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group mb-3 has-validation">
-                            <label class="form-label">Horas S/D/M:</label>
-                            <input type="number" min="0" max="10"
-                                   class="form-control <?php if ($validation->getError('horasSemana')): ?>is-invalid<?php endif ?>"
-                                   name="horasSemana" placeholder="3"
-                                   value="<?php if ($asignatura['horasSemana']): echo $asignatura['horasSemana']; else: set_value('horasSemana'); endif; ?>"/>
-                            <?php if ($validation->getError('horasSemana')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('horasSemana') ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="row">
@@ -108,43 +93,6 @@ $this->section('title') ?>Editar asignatura<?= $this->endSection();
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label class="form-label">Temario de la asignatura:</label>
-                            <textarea
-                                class="form-control <?php if ($validation->getError('temario')): ?>is-invalid<?php endif ?>"
-                                name="temario" placeholder="Temario de la asignatura">
-                                <?php if ($asignatura['temario']): echo $asignatura['temario']; else: set_value('temario'); endif; ?>
-                            </textarea>
-                            <?php if ($validation->getError('temario')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('temario') ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group mb-3 has-validation">
-                            <label class="form-label">Archivo del temario de la asignatura:</label>
-                            <input type="file" accept="application/pdf"
-                                   class="form-control <?php if ($validation->getError('temarioArchivo')): ?>is-invalid<?php endif ?>"
-                                   name="temarioArchivo" placeholder="Temario de la asignatura"
-                                   value="<?php if ($asignatura['temarioArchivo']): echo $asignatura['temarioArchivo']; else: set_value('temarioArchivo'); endif; ?>"/>
-                            <?php if ($validation->getError('temarioArchivo')): ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('temarioArchivo') ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
 
         <div class="card-footer">
             <input type="reset" value="Restablecer" class="btn btn-default">

@@ -7,11 +7,23 @@
     <meta name="description" content="">
     <meta name="author" content="Edgar Degante Aguilar">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Asesorías</title>
+    <title>Competencias</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/dash.css') ?>">
+
+
+    <style {csp-style-nonce}>
+        body {
+            background-color: #10312B;
+            color: #ffffff;
+        }
+
+        .text-uppercase {
+            text-transform: uppercase;
+        }
+    </style>
 
 </head>
 
@@ -21,132 +33,86 @@
         <div class="container text-center">
 
             <h3 class="mt-5">INSTITUTO TECNOLÓGICO SUPERIOR DE TEZIUTLÁN</h3>
-            <h1 class="mt-1">Sistema de Gestión de Asesorías Académicas</h1>
+            <h1 class="mt-1">Sistema de Competencias</h1>
 
             <img src="<?php echo base_url(''); ?>" alt="">
         </div>
     </main>
 
     <article class="container">
-
         <div class="text-center mb-3">
             <h2>Formulario de registro</h2>
         </div>
 
-
-
+        <?php if (session()->has('error')): ?>
+            <div class="alert alert-danger text-danger-emphasis bg-danger-subtle" role="alert">
+                <?= session('error') ?>
+            </div>
+        <?php endif; ?>
         <div>
-            <form class="" action="<?= base_url('/registro') ?>" method="post" enctype="multipart/form-data">
-
-                <div class="card-body">
-                    <h4>Datos personales</h4>
-
-
-                    <?php csrf_field(); ?>
-
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label" for="exampleInputBorderWidth2">Nombre:</label>
-                                <input type="text" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="nombre" placeholder="Ejemplo: Edgar">
-                            </div>
+            <form action="<?= base_url('registro') ?>" method="post">
+                <h5 class="text-center mt-5">Información básica del usuario</h5>
+                <div class="container">
+                    <div class="offset-md-3 col-md-6 mb-3">
+                        <div class="form-group position-relative">
+                            <label class="form-label" for="identificador">Número de control:</label>
+                            <input class="text-uppercase form-control" min="8" max="12" required type="text"
+                                maxlength="8" id="identificador" name="identificador" oninput="autoGenerateEmail()" placeholder="Escriba su numero de control de 8 digitos">
                         </div>
-
-
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label" for="exampleInputBorderWidth2">Apellido Paterno:</label>
-                                <input type="text" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="apaterno" placeholder="Ejemplo: Degante">
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-label" for="exampleInputBorderWidth2">Apellido Materno:</label>
-                                <input type="text" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="amaterno" placeholder="Ejemplo: Aguilar" minlength="3">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="rfc">RFC:</label>
-                                <input type="text" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="rfc" minlength="13" maxlength="13" required>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputBorderWidth2">Sexo:</label>
-                                <select class="form-control" name="sexo" id="">
-                                    <option value="f">Femenino</option>
-                                    <option value="m">Masculino</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputBorderWidth2">Fecha de nacimiento:</label>
-                                <input type="date" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="fechaNacimiento">
-                            </div>
-                        </div>
-
                     </div>
 
-
-                    <h4 class="mt-5">Datos para inicio de sesión</h4>
-
-                    <div class="row">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputBorderWidth2">Nombre de usuario:</label>
-                                <input type="text" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="username" placeholder="miusuario" minlength="5" maxlength="15">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputBorderWidth2">Contraseña:</label>
-                                <input type="password" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="password" minlength="8" maxlength="20" placeholder="Defina una contraseña" aria-describedby="passwordHelpBlock">
-                                    <div class="col-auto">
-                                        <span id="passwordHelpInline" class="form-text">
-                                        Su contraseña debe tener entre 8 y 30 caracteres.
-                                        </span>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputBorderWidth2">Correo electrónico:</label>
-                                <input type="email" class="form-control" required id="exampleInputBorderWidth2"
-                                    name="email" placeholder="usuario@mail.com">
+                    <div class="offset-md-3 col-md-6 mb-3">
+                        <div class="form-group position-relative">
+                            <label class="form-label" for="email">Correo electrónico institucional:</label>
+                            <input class="form-control text-uppercase" required type="email" id="email" name="email"
+                                placeholder="El correo se generara automáticamente">
+                            <div id="emailAlert" class="alert alert-success position-absolute p-1"
+                                style="display: none; top: 0; right: 0; transform: translate(100%, -50%); font-size: 0.8em;">
+                                Correo generado automáticamente
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="card-footer">
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
-                        <button type="reset" class="btn btn-default me-md-2">Restablecer campos</button>
-                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                    <div class="offset-md-3 col-md-6 mb-3">
+                        <div class="form-group position-relative">
+                            <label class="form-label" for="password">Contraseña:</label>
+                            <input id="password" class="form-control" required type="password" name="password" min="8"
+                                max="30" placeholder="Escriba una contraseña mayor a 8 digitos">
+                            
+                        </div>
                     </div>
 
                 </div>
 
+
+                <h5 class="mt-5 text-center">Datos personales</h5>
+                <div class="">
+                    <div class="offset-md-3 col-md-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="">Nombre(s):</label>
+                            <input class="form-control text-uppercase" required type="text" name="nombre">
+                        </div>
+                    </div>
+                    <div class="offset-md-3 col-md-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="">Apellido paterno:</label>
+                            <input class="form-control text-uppercase" required type="text" name="apaterno">
+                        </div>
+                    </div>
+                    <div class="offset-md-3 col-md-6 mb-3">
+                        <div class="form-group">
+                            <label class="form-label" for="">Apellido materno:</label>
+                            <input class="form-control text-uppercase" required type="text" name="amaterno">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5 d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a type="button" class="btn btn-secondary" href="<?=base_url('login')?>">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
             </form>
+
+
+
         </div>
 
 
@@ -155,7 +121,7 @@
 
     <footer class="footer mt-auto py-3">
         <div class="container text-center">
-            <span class="text-muted">Developed by edegantea for ITST. 2024.</span>
+            Developed for Ingeniería Informática ITST. <?= date('Y') . '.'; ?>
         </div>
     </footer>
 
@@ -165,20 +131,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.4/jquery.inputmask.min.js"></script>
 
     <script>
-    // Agregar la máscara al campo de entrada de teléfono
-    $(document).ready(function() {
-        $('#telefono').inputmask('(999) 999-9999');
-    });
+        // Agregar la máscara al campo de entrada de teléfono
+        $(document).ready(function () {
+            $('#telefono').inputmask('(999) 999-9999');
+        });
+    </script>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+        }
     </script>
 
 
     <script>
-    // Agregar la máscara al campo de entrada de CURP
-    $(document).ready(function() {
-        $('#curp').inputmask('aaaA999999HAA999AA9', {
-            placeholder: " "
+        // Agregar la máscara al campo de entrada de CURP
+        $(document).ready(function () {
+            $('#curp').inputmask('aaaA999999HAA999AA9', {
+                placeholder: " "
+            });
         });
-    });
+    </script>
+
+    <script>
+        function autoGenerateEmail() {
+            const controlNumber = document.getElementById("identificador").value;
+            const emailInput = document.getElementById("email");
+            const emailAlert = document.getElementById("emailAlert");
+
+            // Verifica si el número de control tiene 8 caracteres
+            if (controlNumber.length === 8) {
+                emailInput.value = `L${controlNumber}@teziutlan.tecnm.mx`;
+
+                // Muestra la alerta por 3 segundos
+                emailAlert.style.display = "block";
+                setTimeout(() => {
+                    emailAlert.style.display = "none";
+                }, 3000);
+            }
+        }
+
     </script>
 
 </body>

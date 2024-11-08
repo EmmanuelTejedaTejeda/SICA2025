@@ -1,17 +1,9 @@
-<?= $this->extend('admin/template/layout');
-
-$this->section('title') ?> Ver asignatura <?= $this->endSection();
-
-$this->section('encabezado') ?><p class="text-uppercase">Información de la asignatura
-    seleccionado</p><?= $this->endSection();
-
-?>
-
+<?= $this->extend('template/main'); ?>
 
 
 <?= $this->section('content'); ?>
     <div class="">
-        <div class="row py-4">
+        <div class="row">
             <div class="text-end">
                 <a href="<?= base_url('admin/asignaturas') ?>" class="btn btn-default">Regresar</a>
             </div>
@@ -40,7 +32,7 @@ $this->section('encabezado') ?><p class="text-uppercase">Información de la asig
                 <div class="row">
                     <div class="col">
                         <label>Horas D/S/M: </label>
-                        <?php echo trim($asignatura['horasSemana']) ?>
+                        <?php echo trim($asignatura['horas_totales']) ?>
                     </div>
                 </div>
 
@@ -54,22 +46,16 @@ $this->section('encabezado') ?><p class="text-uppercase">Información de la asig
                 <div class="row">
                     <div class="col">
                         <label>Temario: </label>
-                        <?php echo trim($asignatura['temario']) ?>
+                        <?php echo trim($asignatura['temario_asignatura']) ?>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                        <label>Archivo del temario: </label>
-                        <?php echo trim($asignatura['temarioArchivo']) ?>
-                    </div>
-                </div>
+                
 
             </div>
 
         </div>
 
-    </div>
-    </div>
+    </div> 
 
 <?= $this->endSection() ?>

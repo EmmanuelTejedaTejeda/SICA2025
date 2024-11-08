@@ -21,6 +21,11 @@ SET time_zone = "+00:00";
 -- Base de datos: `asesoriasitst24`
 --
 
+
+CREATE DATABASE asesoriasitst24;
+USE asesoriasitst24;usuariosusuarios
+
+
 -- --------------------------------------------------------
 
 --
