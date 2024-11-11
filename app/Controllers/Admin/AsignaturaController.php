@@ -85,22 +85,14 @@ class AsignaturaController extends ResourceController
     }
     public function mostrarAtributos($id = null)
     {
-        // Obtener los detalles de la asignatura
         $asignatura = $this->asignaturaModel->find($id);
-
-        // Verificar si la asignatura existe
         if (!$asignatura) {
-            // Si la asignatura no existe, redirigir o mostrar un mensaje de error
             return redirect()->to('/admin/asignaturas')->with('failed', 'Asignatura no encontrada.');
         }
-
-        // Obtener los atributos asociados a la asignatura usando un join entre asignaturas_atributos y atributos
         $atributosAsignados = $this->asignaturaAtributoModel
-            ->join('atributos', 'atributos.id = asignaturas_atributos.atributo_id') // Hacer el join con la tabla atributos
-            ->where('asignaturas_atributos.asignatura_id', $id) // Filtrar por asignatura_id
-            ->findAll(); // Obtener todos los registros correspondientes
-
-        // Pasar los datos a la vista
+            ->join('atributos', 'atributos.id = asignaturas_atributos.atributo_id')
+            ->where('asignaturas_atributos.asignatura_id', $id)
+            ->findAll();
         return view('admin/asignaturas/mostrarAtributos', compact('asignatura', 'atributosAsignados'));
     }
 

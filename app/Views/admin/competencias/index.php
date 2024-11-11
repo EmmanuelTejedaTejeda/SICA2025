@@ -11,10 +11,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     <?php echo session()->getFlashdata('success') ?>
                 </div>
-            <?php elseif (session()->getFlashdata('failed')): ?>
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert">&times;</button>
-                    <?php echo session()->getFlashdata('failed') ?>
+            <?php elseif (session()->get('failed')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->get('failed') ?>
+                </div>
+            <?php endif; ?>
+            <?php if (session()->get('error')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->get('error'); ?>
                 </div>
             <?php endif; ?>
             <?php if (session()->get('eliminado')): ?>
@@ -71,11 +75,11 @@
                                             <?= !empty($competencia['nombre_asignatura']) ? $competencia['nombre_asignatura'] : 'No asignado' ?>
                                         </td>
                                         <td class="text-uppercase">
-                                            <?= !empty($competencia['clave_competencia']) ?$competencia['clave_competencia']. '-' . $competencia['nombre_competencia'] : 'No asignado' ?>
+                                            <?= !empty($competencia['clave_competencia']) ? $competencia['clave_competencia'] . '-' . $competencia['nombre_competencia'] : 'No asignado' ?>
                                         </td>
                                         <td>
                                             <ul>
-                                                <li><?= $competencia['nombre_atributo']; ?><?=$competencia['atributoId']?></li>
+                                                <li><?= $competencia['nombre_atributo']; ?><?= $competencia['atributoId'] ?></li>
                                             </ul>
                                         </td>
                                         <td class="d-flex">
@@ -83,20 +87,11 @@
                                                 class="btn btn-default" title="Editar">
                                                 <i class="fas fa-edit text-primary"></i>
                                             </a>
-                                            <a href="" class="btn btn-default" data-bs-toggle="modal"
-                                                data-bs-target="#modalCompetencias"
-                                                data-clave="<?= htmlspecialchars($competencia['nombre_atributo']) ?>"
-                                                data-nombre-estudiante="<?= htmlspecialchars($competencia['nombre_usuario']) ?>"
-                                                data-apaterno-estudiante="<?= htmlspecialchars($competencia['apaterno_usuario']) ?>"
-                                                data-amaterno-estudiante="<?= htmlspecialchars($competencia['amaterno_usuario']) ?>"
-                                                data-estudiante-id="<?= htmlspecialchars($competencia['estudianteId']) ?>"
-                                                data-calificacion="<?= htmlspecialchars($competencia['calificacion']) ?>"
-                                                data-fase="<?= htmlspecialchars($competencia['fase']) ?>"
-                                                data-atributo_id="<?=htmlspecialchars($competencia['atributoId'])?>">
+                                            <a class="btn btn-default"
+                                                href="<?= base_url('admin/competencias/' . $competencia['atributoId'] . '/mostrarCalificaciones') ?>">
                                                 <i class="fas fa-eye"></i>
+
                                             </a>
-
-
                                             <form class=" display-none" method="post"
                                                 action="<?= base_url('admin/competencias/' . $competencia['atributoId']) ?>"
                                                 id="competenciaDeleteForm<?= $competencia['atributoId'] ?>">

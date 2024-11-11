@@ -9,6 +9,7 @@ use App\Models\CompetenciaAtributoModel;
 use App\Models\CarreraAsignatura;
 use App\Models\GrupoModel;
 use App\Models\EvaluaionAtributo;
+use App\Models\UsuarioModel;
 
 
 class CompetenciaController extends BaseController
@@ -20,6 +21,7 @@ class CompetenciaController extends BaseController
     private $matriculacionModel;
     private $grupoModel;
     private $evaluacionAtributoModel;
+    private $usuarioModel;
 
 
     public function __construct()
@@ -32,6 +34,7 @@ class CompetenciaController extends BaseController
         $this->carreraAsignaturaModel = new CarreraAsignatura();
         $this->grupoModel = new GrupoModel();
         $this->evaluacionAtributoModel = new EvaluaionAtributo();
+        $this->usuarioModel = new UsuarioModel();
     }
 
     public function consulta()
@@ -86,27 +89,7 @@ class CompetenciaController extends BaseController
         )->getResultArray();
     }
 
-    public function calificaciones(){
-        $conexion = \Config\Database::connect();
-        return $conexion->query(
-            'SELECT
-        atri.id as atributoId,
-        atri.nombre_atributo,
-        u.id as estudianteId,
-        u.nombre as nombre_usuario,
-        u.apaterno as apaterno_usuario,
-        u.amaterno as amaterno_usuario,
-        ev.atributo_id,
-        ev.estudiante_id,
-        ev.fase,
-        ev.calificacion 
-        from atributos as atri
-        left join evaluacion_atributo as ev on ev.atributo_id  = atri.id
-        left join usuarios as u on ev.estudiante_id  = u.id
-        group BY ev.id'
-        )->getResultArray();
-        
-    }
+
 
 
     public function index()
@@ -136,7 +119,7 @@ class CompetenciaController extends BaseController
     {
 
         $inputs = [
-            'nombre' => 'required'        
+            'nombre' => 'required'
         ];
 
         if (!$this->validate($inputs)) {
@@ -199,34 +182,122 @@ class CompetenciaController extends BaseController
 
     public function guardarCalificacion()
     {
-        $inputs = [
-            'atributo_id' => 'required',
-            'estudiante_id' => 'required',
-            'fase' => 'required',
-            'calificacion' => 'required'
-        ];
-
-        if (!$this->validate($inputs)) {
-            $validationErrors = $this->validator->listErrors();
-            return redirect()->back()->with('failed', 'Datos no válidos: ' . $validationErrors)->withInput();
-        }
         $atributo_id = $this->request->getVar('atributo_id');
-        $estudiante_id = $this->request->getVar('estudiante_id');
-        $fase = $this->request->getVar('fase');
-        $calificacion = $this->request->getVar('calificacion');
+        $estudiante_ids = $this->request->getVar('estudiante_id');
+        $fases = $this->request->getVar('fase');
+        $calificaciones = $this->request->getVar('calificacion');
+        $nombres = $this->request->getVar('nombre_estudiante');
 
-        $data = [
-            'atributo_id' => $atributo_id,
-            'estudiante_id' => $estudiante_id,
-            'fase' => $fase,
-            'calificacion' => $calificacion
-        ];
-        $this->evaluacionAtributoModel->insert($data);
-        return redirect()->to(base_url('/admin/competencias'));
+        if (!$calificaciones) {
+            return redirect()->back()->with('error', 'Datos no válidos: Faltan algunos campos.')->withInput();
+        } else {
+            $estudiantes_con_max_calificaciones = [];
+            $estudiantes_con_fase_duplicada = [];
+
+            foreach ($estudiante_ids as $index => $estudiante_id) {
+                $fase = $fases[$index];
+                $calificacion = $calificaciones[$index];
+                $nombre = $nombres[$index];
+
+                $numCalificaciones = $this->evaluacionAtributoModel
+                    ->where('atributo_id', $atributo_id)
+                    ->where('estudiante_id', $estudiante_id)
+                    ->countAllResults();
+
+                if ($numCalificaciones < 3) {
+                    $calificacionExistente = $this->evaluacionAtributoModel
+                        ->where('atributo_id', $atributo_id)
+                        ->where('estudiante_id', $estudiante_id)
+                        ->where('fase', $fase)
+                        ->first();
+
+                    if ($calificacionExistente) {
+                        $estudiantes_con_fase_duplicada[] = $nombre;
+                    } else {
+                        $data = [
+                            'atributo_id' => $atributo_id,
+                            'estudiante_id' => $estudiante_id,
+                            'fase' => $fase,
+                            'calificacion' => $calificacion
+                        ];
+                        $this->evaluacionAtributoModel->insert($data);
+                    }
+                } else {
+                    $estudiantes_con_max_calificaciones[] = $nombre;
+                }
+            }
+            $mensaje_error = '';
+            if (!empty($estudiantes_con_max_calificaciones)) {
+                $nombres_con_max_calificaciones = implode(', ', $estudiantes_con_max_calificaciones);
+                $mensaje_error .= 'Los siguientes estudiantes ya tienen 3 calificaciones: ' . $nombres_con_max_calificaciones . '. Por lo que no se agregaran las calificaciones.';
+            }
+            if (!empty($estudiantes_con_fase_duplicada)) {
+                $nombres_con_fase_duplicada = implode(', ', $estudiantes_con_fase_duplicada);
+                $mensaje_error .= 'Los siguientes estudiantes ya tienen calificación en la misma fase: ' . $nombres_con_fase_duplicada . '. Por lo que no se agregaran las calificaciones.';
+            }
+
+            if ($mensaje_error) {
+                return redirect()->to(base_url('/admin/competencias/' . $atributo_id . '/mostrarCalificaciones'))
+                    ->with('error', $mensaje_error);
+            }
+
+            return redirect()->to(base_url('/admin/competencias/' . $atributo_id . '/mostrarCalificaciones'))
+                ->with('success', 'Datos agregados con éxito');
+        }
     }
-    public function mostrarCalificaciones($id = null){
+
+
+    public function mostrarCalificaciones($id = null)
+    {
         $atributo = $this->atributoModel->find($id);
-        $consulta = $this->calificaciones();
-        return view('admin/competencias/mostrarCalificaciones', compact('atributo', 'consulta'));
+        if (!$atributo) {
+            return redirect()->to('admin/competencias')->with('error', 'Atributo no encontrado, verifique la informacion');
+        } else {
+            $usuarios = $this->usuarios($id);
+            foreach ($usuarios as &$usuario) {
+                $usuario['calificaciones'] = $this->calificacionesPorUsuario($usuario['estudiante_id'], $id);
+            }
+            return view('admin/competencias/mostrarCalificaciones', compact('atributo', 'usuarios'));
+        }
     }
+
+
+    public function usuarios($id)
+    {
+        $conexion = \Config\Database::connect();
+        $query =
+            'SELECT
+            u.id as estudiante_id,
+            u.nombre as nombre_usuario, 
+            u.apaterno as apaterno_usuario,
+            u.amaterno as amaterno_usuario,
+            m.grupo,
+            gcpe.id as grupocpe_id,
+            carasig.asignatura_id,
+            atri.id as atributo_id
+        FROM usuarios as u
+        LEFT JOIN matriculacion as m ON m.estudiante = u.id 
+        LEFT JOIN grupocpe as gcpe ON m.grupo = gcpe.id
+        LEFT JOIN carrera_asignatura as carasig ON carasig.grupocpe_id = gcpe.id
+        LEFT JOIN asignaturas as asig ON carasig.asignatura_id = asig.id 
+        LEFT JOIN asignaturas_atributos as asigatri ON asigatri.asignatura_id = asig.id 
+        LEFT JOIN atributos as atri ON asigatri.atributo_id = atri.id
+        WHERE atri.id = ?
+        GROUP BY u.id';
+        return $conexion->query($query, [$id])->getResultArray();
+    }
+    public function calificacionesPorUsuario($usuarioId, $atributoId)
+    {
+        $conexion = \Config\Database::connect();
+        $query =
+            'SELECT
+            ev.id as evaluacion_id,
+            ev.fase,
+            ev.calificacion
+        FROM evaluacion_atributo as ev
+        WHERE ev.estudiante_id = ? AND ev.atributo_id = ?';
+        return $conexion->query($query, [$usuarioId, $atributoId])->getResultArray();
+    }
+    
+
 }

@@ -1,0 +1,264 @@
+INFO - 2024-11-09 00:23:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-11-09 00:23:51 --> mysqli_sql_exception: Unknown column 'evaluacion_atributo.atributo_id' in 'where clause' in D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php(306): mysqli->query()
+#1 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 D:\xampp\htdocs\sicac\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query()
+#4 D:\xampp\htdocs\sicac\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\sicac\system\BaseModel.php(624): CodeIgniter\Model->doFindAll()
+#6 D:\xampp\htdocs\sicac\app\Controllers\Admin\CompetenciaController.php(242): CodeIgniter\BaseModel->findAll()
+#7 D:\xampp\htdocs\sicac\system\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+#8 D:\xampp\htdocs\sicac\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#9 D:\xampp\htdocs\sicac\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#10 D:\xampp\htdocs\sicac\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\sicac\system\Commands\Server\rewrite.php(47): require_once('...')
+#12 {main}
+CRITICAL - 2024-11-09 00:23:51 --> Unknown column 'evaluacion_atributo.atributo_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Controllers\Admin\CompetenciaController.php(242): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 00:25:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 01:39:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 01:39:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:05:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:05:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:05:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:39:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:40:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:52:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:52:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:52:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:56:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-09 15:56:10 --> Undefined array key "nombre"
+in APPPATH\Views\admin\competencias\mostrarCalificaciones.php on line 20.
+ 1 APPPATH\Views\admin\competencias\mostrarCalificaciones.php(20): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\xampp\\htdocs\\sicac\\app\\Views\\admin\\competencias\\mostrarCalificaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH\Controllers\Admin\CompetenciaController.php(258): view()
+ 6 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 15:57:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:57:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 15:57:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:06:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:06:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:06:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:17:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-11-09 16:17:00 --> mysqli_sql_exception: Unknown column 'usuario.id' in 'on clause' in D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php(306): mysqli->query()
+#1 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 D:\xampp\htdocs\sicac\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query()
+#4 D:\xampp\htdocs\sicac\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\sicac\system\BaseModel.php(624): CodeIgniter\Model->doFindAll()
+#6 D:\xampp\htdocs\sicac\app\Controllers\Admin\CompetenciaController.php(265): CodeIgniter\BaseModel->findAll()
+#7 D:\xampp\htdocs\sicac\system\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+#8 D:\xampp\htdocs\sicac\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#9 D:\xampp\htdocs\sicac\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#10 D:\xampp\htdocs\sicac\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\sicac\system\Commands\Server\rewrite.php(47): require_once('...')
+#12 {main}
+CRITICAL - 2024-11-09 16:17:00 --> Unknown column 'usuario.id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Controllers\Admin\CompetenciaController.php(265): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 16:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-11-09 16:17:12 --> mysqli_sql_exception: Unknown column 'carrera_asignaturas.asignatura_id' in 'on clause' in D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php(306): mysqli->query()
+#1 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 D:\xampp\htdocs\sicac\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query()
+#4 D:\xampp\htdocs\sicac\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\sicac\system\BaseModel.php(624): CodeIgniter\Model->doFindAll()
+#6 D:\xampp\htdocs\sicac\app\Controllers\Admin\CompetenciaController.php(265): CodeIgniter\BaseModel->findAll()
+#7 D:\xampp\htdocs\sicac\system\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+#8 D:\xampp\htdocs\sicac\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#9 D:\xampp\htdocs\sicac\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#10 D:\xampp\htdocs\sicac\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 D:\xampp\htdocs\sicac\system\Commands\Server\rewrite.php(47): require_once('...')
+#12 {main}
+CRITICAL - 2024-11-09 16:17:12 --> Unknown column 'carrera_asignaturas.asignatura_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll()
+ 4 APPPATH\Controllers\Admin\CompetenciaController.php(265): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 16:17:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:21:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:22:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-09 16:22:09 --> Undefined variable $id
+in APPPATH\Views\admin\competencias\mostrarCalificaciones.php on line 37.
+ 1 APPPATH\Views\admin\competencias\mostrarCalificaciones.php(37): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\xampp\\htdocs\\sicac\\app\\Views\\admin\\competencias\\mostrarCalificaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH\Controllers\Admin\CompetenciaController.php(267): view()
+ 6 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 16:22:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:22:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:22:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:23:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:23:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:23:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:23:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:25:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-09 16:25:09 --> Undefined array key "nombre_usuario"
+in APPPATH\Views\admin\competencias\mostrarCalificaciones.php on line 20.
+ 1 APPPATH\Views\admin\competencias\mostrarCalificaciones.php(20): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\xampp\\htdocs\\sicac\\app\\Views\\admin\\competencias\\mostrarCalificaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render()
+ 5 APPPATH\Controllers\Admin\CompetenciaController.php(266): view()
+ 6 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 16:41:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:41:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:42:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-09 16:47:10 --> compact(): Undefined variable $usuarios
+in APPPATH\Controllers\Admin\CompetenciaController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\Admin\CompetenciaController.php(219): compact()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 16:47:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:47:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:48:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:54:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:54:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:54:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:54:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:54:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:58:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 16:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 19:46:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 19:46:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 19:52:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 19:52:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 19:52:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 19:52:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:02:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:17:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:17:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:24:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-09 20:24:27 --> compact(): Undefined variable $usuarios
+in APPPATH\Controllers\Admin\CompetenciaController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\Admin\CompetenciaController.php(219): compact()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 20:24:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-09 20:24:29 --> compact(): Undefined variable $usuarios
+in APPPATH\Controllers\Admin\CompetenciaController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH\Controllers\Admin\CompetenciaController.php(219): compact()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 20:25:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:25:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:27:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:27:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:47:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:48:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:50:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:51:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 20:52:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 21:12:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 21:24:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-11-09 21:24:10 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ev.fase,
+            ev.calificacion
+        FROM evaluacion_atributo as ev...' at line 3 in D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 D:\xampp\htdocs\sicac\system\Database\MySQLi\Connection.php(306): mysqli->query()
+#1 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 D:\xampp\htdocs\sicac\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 D:\xampp\htdocs\sicac\app\Controllers\Admin\CompetenciaController.php(257): CodeIgniter\Database\BaseConnection->query()
+#4 D:\xampp\htdocs\sicac\app\Controllers\Admin\CompetenciaController.php(218): App\Controllers\Admin\CompetenciaController->calificacionesPorUsuario()
+#5 D:\xampp\htdocs\sicac\system\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+#6 D:\xampp\htdocs\sicac\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+#7 D:\xampp\htdocs\sicac\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+#8 D:\xampp\htdocs\sicac\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 D:\xampp\htdocs\sicac\system\Commands\Server\rewrite.php(47): require_once('...')
+#10 {main}
+CRITICAL - 2024-11-09 21:24:10 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ev.fase,
+            ev.calificacion
+        FROM evaluacion_atributo as ev...' at line 3
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Admin\CompetenciaController.php(257): CodeIgniter\Database\BaseConnection->query()
+ 2 APPPATH\Controllers\Admin\CompetenciaController.php(218): App\Controllers\Admin\CompetenciaController->calificacionesPorUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Admin\CompetenciaController->mostrarCalificaciones()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\xampp\\htdocs\\sicac\\public\\index.php')
+INFO - 2024-11-09 21:24:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:41:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:44:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:44:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:47:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:48:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-09 22:50:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

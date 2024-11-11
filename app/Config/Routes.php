@@ -32,7 +32,7 @@ $routes->group(
 
         $routes->resource('carreras', ['controller' => 'Admin\CarreraController']);
 
-
+        
         $routes->get('competencias/(:num)/mostrarCalificaciones', 'Admin\CompetenciaController::mostrarCalificaciones/$1');
         $routes->delete('admin/competencias/(:num)', 'Admin\CompetenciaController::delete/$1');
         $routes->get('admin/competencias/(:num)/edit', 'Admin\CompetenciaController::edit/$1');
